@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Journal</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="skeleton.css"/>
+</head>
+<body style="background: white;">
+<div class="container">
+    <div class="columns four sidebar">
+        <div id="record-list">
+            <div></div>
+            <ul>
+            </ul>
+        </div>
+        <input type="text" id="journal-text-add" placeholder="Add Journal"/>
+        <ul id="journal-list" class="journal-list"></ul>
+    </div>
+    <div class="columns eight main-panel">
+        <div class="canvas-container">
+            <canvas id="spectrum-canvas"></canvas>
+        </div>
+        <div class="recording-panel sub-panel">
+            <div class="audio-selection">
+                <div class="audio-input-selection">
+                    <select id="audio-devices" name="Audio Input"></select>
+                    <span id="audio-input-selection-feedback" class="loading-spinner done"></span>
+                    <span id="audio-input-selection-feedback-message"></span>
+                </div>
+            </div>
+            <div class="input-button-container">
+                <button id="start-pause-button" class="record"></button>
+                <button id="stop-button" disabled></button>
+            </div>
+        </div>
+        <div class="stage hidden sub-panel" id="stage-container">
+            <input class="hidden" type="text" id="record-text-add" placeholder="Record Title"/>
+            <div id="record-text" class="hidden"></div>
+            <div id="stage-journals-container">
+                <span><span id="stage-journals-label">Journals</span> (<a id="stage-journals-edit">Edit</a>): </span>
+                <ul id="stage-journals-list" class="journal-list"></ul>
+            </div>
+            <audio id="stage-audio" preload="auto"></audio>
+            <div class="audio-container">
+                <button id="stage-start-button" class="play"></button>
+                <span><a id="volume-mute-button" class="vol"></a><input type="range" value="1" min="0" max="1" step="any" id="stage-volume-slider" /></span>
+            </div>
+            <div class="stage-buttons">
+                <button id="stage-confirm">Save</button>
+                <div style="flex-grow: 1"></div>
+                <button id="stage-discard">Discard</button>
+            </div>
+        </div>
+        <ul id="entry-list"></ul>
+    </div>
+</div>
+<div id="delete-popup" class="popup hidden">
+    <div class="center-panel">
+        <div class="delete-popup-header">Delete Record?</div>
+        <div>
+            <button id="delete-cancel">Cancel</button>
+            <button id="delete-confirm">Confirm</button>
+        </div>
+    </div>
+</div>
+<div id="delete-journal-popup" class="popup hidden">
+    <div class="center-panel">
+        <div class="delete-popup-header">Delete Journal?</div>
+        <div>
+            <button id="journal-delete-cancel">Cancel</button>
+            <button id="journal-delete-confirm">Confirm</button>
+        </div>
+    </div>
+</div>
+<div id="edit-record-journal-popup" class="popup hidden">
+    <div class="center-panel">
+        <ul id="edit-record-journal-list" class="journal-list"></ul>
+        <button id="edit-record-journal-cancel">Cancel</button>
+        <button id="edit-record-journal-confirm">Confirm</button>
+    </div>
+</div>
+<script type="application/javascript" src="index.js"></script>
+</body>
+</html>

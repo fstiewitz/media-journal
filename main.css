@@ -1,0 +1,481 @@
+/*
+ * Copyright (c) 2021 Fabian Stiewitz <fabian@stiewitz.pw>
+ * Licensed under the terms of the EUPL-1.2
+ */
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.application-icon-large {
+    background-image: url("icon/icon.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 60%;
+    height: 80%;
+}
+
+.app-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app-name {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+span {
+    user-select: none;
+}
+
+#collection-list {
+    list-style: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.collection-entry {
+    display: flex;
+    align-items: center;
+}
+
+.collection-entry a {
+    width: 100%;
+    color: black;
+    font-weight: bold;
+}
+
+#stage-journals-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#stage-journals-list li {
+    min-width: 50px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 0 5px 0 5px;
+}
+
+#stage-journals-container {
+    display: flex;
+    padding: 10px 0 10px 0;
+}
+
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(1, 1, 1, 0.5);
+}
+
+.delete-popup-header {
+    font-weight: bold;
+}
+
+#delete-confirm, #journal-delete-confirm {
+    background: indianred;
+}
+
+.center-panel {
+    background: white;
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+}
+
+.main-panel {
+    height: 100%;
+    background: grey;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#entry-list {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.sub-panel {
+    border-radius: 5px;
+    background: white;
+    margin: 5px;
+    padding: 15px;
+}
+
+body > div {
+    width: 100%;
+    height: 100%;
+}
+
+ul > li {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.journal-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+#record-list {
+    flex: 2;
+    max-height: 60%;
+}
+
+#record-list a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.journal-list li {
+    display: flex;
+}
+
+.journal-list .label {
+    flex-grow: 1;
+}
+
+li > ul {
+    margin-top: 0.5rem !important;
+}
+
+li > .label {
+    cursor: pointer;
+    user-select: none;
+    display: inline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#entry-list, .journal-list, #record-list ul {
+    list-style: none;
+}
+
+.audio-input-selection {
+    display: flex;
+    align-items: center;
+}
+
+#audio-input-selection-feedback {
+    margin-left: 5px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+#collection-list {
+    margin: 10px 20px 0 0;
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+#new-collection {
+    background-image: url("node_modules/material-design-icons/content/svg/production/ic_add_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+.collection-entry {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.collection {
+    background-image: url("node_modules/material-design-icons/action/svg/production/ic_book_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#audio-input-selection-feedback.done {
+    background-image: url("node_modules/material-design-icons/navigation/svg/production/ic_check_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#audio-input-selection-feedback.error {
+    background-image: url("node_modules/material-design-icons/navigation/svg/production/ic_close_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#audio-input-selection-feedback-message {
+    opacity: 0;
+    user-select: none;
+}
+
+#audio-input-selection-feedback-message.done {
+    color: green;
+    animation-name: fade-out;
+    animation-duration: 5s;
+}
+
+#audio-input-selection-feedback-message.error {
+    color: indianred;
+    animation-name: fade-out;
+    animation-duration: 5s;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 100%;
+    }
+    90% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#audio-input-selection-feedback.loading {
+    border-color: indianred transparent indianred transparent;
+    border-radius: 80%;
+    border-width: 2px;
+    border-style: solid;
+
+    animation-name: simple-loading-spinner;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes simple-loading-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#entry-list > .entry {
+    display: flex;
+    align-items: center;
+
+    padding: 20px 20px 20px 20px;
+    border-radius: 5px;
+    background: white;
+    margin: 5px;
+    font-size: large;
+}
+
+#entry-list > .entry > span {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_note_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#entry-list .entry-label {
+    flex-grow: 1;
+    font-style: normal;
+    color: initial;
+}
+
+.input-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-pause-button {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 50%;
+    border-width: 5px;
+    border-color: indianred;
+    background-color: indianred;
+}
+
+#start-pause-button:hover {
+    background-color: palevioletred;
+}
+
+#stop-button {
+    width: 75px;
+    height: 75px;
+    margin: 20px;
+    border-radius: 50%;
+    border-width: 2px;
+    padding: 0;
+}
+
+.delete-button {
+    border: 0;
+    margin-bottom: 0;
+    background-image: url("node_modules/material-design-icons/content/svg/production/ic_remove_circle_outline_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#stop-button {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_stop_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 75%;
+}
+
+#start-pause-button {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50%;
+}
+
+.stage-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#stage-confirm {
+    flex-grow: 1;
+}
+
+#stage-discard {
+    background-color: indianred;
+}
+
+.audio-container {
+    display: flex;
+    align-items: center;
+}
+
+.canvas-container {
+    width: 100%;
+    height: 20%;
+}
+
+#spectrum-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#stage-start-button {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50%;
+}
+
+#stage-start-button.play {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_play_arrow_24px.svg");
+}
+
+#stage-start-button.pause {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_pause_24px.svg");
+}
+
+#start-pause-button.play {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_play_arrow_24px.svg");
+}
+
+#start-pause-button.record {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_fiber_manual_record_24px.svg");
+}
+
+#start-pause-button.pause {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_pause_24px.svg");
+}
+
+#audio-devices {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_mic_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#record-text-add {
+    background-image: url("node_modules/material-design-icons/content/svg/production/ic_add_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#record-text {
+    user-select: none;
+    font-weight: bold;
+}
+
+#journal-text-add {
+    background-image: url("node_modules/material-design-icons/content/svg/production/ic_add_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#volume-mute-button {
+    cursor: pointer;
+}
+
+#volume-mute-button.vol {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_volume_up_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+#volume-mute-button.muted {
+    background-image: url("node_modules/material-design-icons/av/svg/production/ic_volume_mute_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 26px;
+}
+
+.journal-list .journal-entry {
+    display: flex;
+    align-items: center;
+}
+
+.journal-entry input {
+    margin-bottom: 4px;
+}
+
+.journal-entry .label {
+    margin-bottom: 0;
+}
+
+#stage-journals-container {
+    width: 100%;
+}
+
+#stage-journals-edit {
+    cursor: pointer;
+}
+

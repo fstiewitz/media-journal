@@ -1,0 +1,62 @@
+{
+  "name": "media-journal",
+  "description": "Keep a Multi-Media Journal",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start --",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "Fabian Stiewitz <fabian@stiewitz.pw>",
+  "license": "EUPL-1.2",
+  "private": true,
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^11.2.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.16.1",
+    "electron-store": "^7.0.0",
+    "material-design-icons": "^3.0.1",
+    "yargs": "^16.2.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "icon/icon_48px.png"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "categories": [
+                "AudioVideo",
+                "Office"
+              ],
+              "genericName": "Recorder",
+              "icon": {
+                "16x16": "icon/icon_16px.png",
+                "24x24": "icon/icon_24px.png",
+                "48x48": "icon/icon_48px.png"
+              },
+              "maintainer": "Fabian Stiewitz"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

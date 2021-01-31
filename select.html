@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Journal</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="skeleton.css"/>
+</head>
+<body style="background: white;">
+<div class="container" style="margin-bottom: 30px">
+    <div style="width: 100%; height: 50%; display: flex; align-content: center; justify-content: center">
+        <div class="app-info">
+            <div class="app-name">Media Journal</div>
+            <div><small>Version 0.1</small></div>
+        </div>
+        <div class="application-icon-large"></div>
+    </div>
+    <div style="height: 40%">
+        <ul id="collection-list">
+            <li id="default-collection" class="collection collection-entry"><a id="default-collection-select">Default Collection</a></li>
+            <li id="new-collection" class="collection-entry"><a id="new-collection-select">New Collection</a></li>
+        </ul>
+    </div>
+</div>
+<script type="application/javascript" src="select.js"></script>
+</body>
+</html>
